@@ -1391,7 +1391,7 @@ input::placeholder {
   z-index: -999;
   width: 100%;
   height: 100%;
-  background: #80CBC4;
+  background: url(https://yilan-picbed.oss-cn-hangzhou.aliyuncs.com/tjyl-img/bizhi/2.jpg);
   background-attachment: local;
   background-position: center;
   background-size: cover;
@@ -2709,9 +2709,6 @@ figure.highlight pre .javascript .function {
   .recent-post-item .recent-post-info .recent-post-meta > .article-meta-wrap .article-meta-link {
     margin: 0 4px;
   }
-  .recent-post-item .recent-post-info .recent-post-meta > .article-meta-wrap time {
-    display: none;
-  }
   .recent-post-item .recent-post-info .recent-post-meta > .article-meta-wrap a {
     color: #858585;
   }
@@ -3826,6 +3823,13 @@ h1.page-title + .tag-cloud-list {
   background-position: bottom;
   background-size: cover;
 }
+#footer:before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  content: '';
+}
 #footer-wrap {
   position: relative;
   padding: 40px 20px;
@@ -3868,12 +3872,12 @@ h1.page-title + .tag-cloud-list {
   content: '';
 }
 #page-header.full_page {
-  height: 100vh;
+  height: 400px;
   background-attachment: fixed;
 }
 #page-header.full_page #site-info {
   position: absolute;
-  top: 43%;
+  top: 250px;
   padding: 0 10px;
   width: 100%;
 }
@@ -4269,7 +4273,7 @@ h1.page-title + .tag-cloud-list {
   position: relative;
   padding-bottom: 6px;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-  font-size: 0.78em;
+  font-size: 0.9em;
   cursor: pointer;
 }
 #nav .site-page:not(.child):after {
@@ -6745,7 +6749,7 @@ url('/fonts/iconfont.svg#iconfont') format('svg');
 
 .iconfont {
   font-family: "iconfont" !important;
-  font-size: 22px;
+  font-size: 1.25em;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -6890,28 +6894,29 @@ url('/fonts/iconfont.svg#iconfont') format('svg');
 .layout{
     max-width: 1300px;
 }
+
 /* 页脚透明 */
-#footer{
+/*#footer{
   background: transparent!important;
-}
+}*/
 /* 页脚黑色透明玻璃效果移除 */
-#footer::before{
+/*#footer::before{
     background: transparent!important;
-  }
+  }*/
 /* 头图透明 */
-#page-header{
+/*#page-header{
   background: transparent!important;
 }
 /* 头图遮罩层透明 */
-#page-header::before{
+/*#page-header::before{
   background: transparent!important;
-  }
+  } */
 /*top-img黑色透明玻璃效果移除，不建议加，除非你执着于完全一图流或者背景图对比色明显 */
-#page-header.post-bg:before {
+/*#page-header.post-bg:before {
   background-color: transparent!important;
-}
+} */
 /*夜间模式伪类遮罩层透明*/
-[data-theme="dark"]
+/*[data-theme="dark"]
   #footer::before{
       background: transparent!important;
     }
@@ -7189,6 +7194,116 @@ button#go-up:hover i {
 button#go-up:hover #percent {
     display: none !important;
 }
+/* 消息弹窗 */
+.snackbar-container {
+    background: var(--heo-main) !important;
+    color: var(--heo-white) !important;
+    border-radius: 0 !important;
+    display: flex;
+    justify-content: center !important;
+    max-width: none !important;
+    min-width: 100% !important;
+    margin: 0px !important;
+    left: 0px !important;
+    height: 60px !important;
+    transform: none !important;
+  }
+  .snackbar-container p {
+    font-weight: bold !important;
+    text-align: center !important;
+    font-size: 0.8rem !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+  .snackbar-container .action {
+    color: var(--heo-white) !important;
+    padding: 4px 6px !important;
+    font-weight: bold;
+    border-radius: 8px !important;
+    transition: 0.3s;
+    border: var(--style-border) !important;
+  }
+  .snackbar-container .action:hover {
+    color: var(--heo-main) !important;
+    background: var(--heo-white) !important;
+  }
+  .snackbar-container::after {
+    position: absolute;
+    width: 0;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: var(--heo-white);
+    opacity: 0.1;
+    content: "";
+    animation: snackbar-progress 2s linear forwards;
+    pointer-events: none;
+  }
+  @keyframes snackbar-progress {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+.pace {
+  pointer-events: none;
+  user-select: none;
+  z-index: 2;
+  position: fixed;
+  margin: auto;
+  top: 4px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  border-radius: 8px;
+  width: 6rem;
+  background: #eaecf2;
+  overflow: hidden;
+}
+
+.pace-inactive .pace-progress {
+  opacity: 0;
+  transition: 0.3s ease-in;
+}
+
+.pace.pace-inactive {
+  opacity: 0;
+  transition: 0.3s;
+  top: -8px;
+}
+
+.pace .pace-progress {
+  box-sizing: border-box;
+  transform: translate3d(0, 0, 0);
+  position: fixed;
+  z-index: 2;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 100%;
+  height: 100%;
+  width: 100%;
+  background: #49b1f5;
+  background: linear-gradient(
+    to right,
+    rgb(18, 194, 233),
+    rgb(196, 113, 237),
+    rgb(246, 79, 89)
+  );
+  animation: gradient 2s ease infinite;
+  background-size: 200%;
+}
+.framework {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+}
+
 .search-dialog {
   position: fixed;
   top: 10%;

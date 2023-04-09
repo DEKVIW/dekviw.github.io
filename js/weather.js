@@ -2,9 +2,9 @@ WIDGET = {
   "CONFIG": {
     "modules": "012",
     "background": "5",
-    "tmpColor": "FFD700",
+    "tmpColor": "000000",
     "tmpSize": "18",
-    "cityColor": "FFD700",
+    "cityColor": "000000",
     "citySize": "18",
     "aqiColor": "FFFFFF",
     "aqiSize": "16",
